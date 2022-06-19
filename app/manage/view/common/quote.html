@@ -1,0 +1,22 @@
+<ul style="list-style: none;">
+{volist name='list' id='row'}
+    <li id="{$sign}_li{$row.id}" >
+        <span id="{$sign}_span{$row.id}" onclick="{$sign}.quote_select({$row.id})">
+            <div style="position: relative;display: inline-block;right: 0.2cm;">
+                <input type="checkbox" id="{$sign}_checkbox{$row.id}" />
+                <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;"></div>
+            </div>
+            {:getAddInfoHTML($sign, $row)}
+            {$row.chinese}
+        </span>
+        {:isParent($sign, $row.id)
+            ? '<button id="'.$sign.'_button'.$row.id.'" onclick="'.$sign.'.quote_openf('.$row.id.');">展开</button>'
+            : ''
+        }
+    </li>
+    <script>
+        if (typeof {$sign}.quote_checkList[{$row.id}] == "undefined") {$sign}.quote_checkList[{$row.id}] = false;
+    </script>
+{/volist}
+</ul>
+{$list|raw}

@@ -1,0 +1,18 @@
+<ul>
+{volist name='list' id='row'}
+    <li id="{$sign}_li{$row.id}">
+        <span onmousedown="{$sign}.select({$row.id})" id="{$sign}_span{$row.id}">
+            {:getAddInfoHTML($sign, $row)}
+            {$row.chinese}
+        </span>
+        {:isParent($sign, $row.id)
+            ? '<button id="'.$sign.'_button'.$row.id.'" onclick="'.$sign.'.openf('.$row.id.');">展开</button>'
+            : ''
+        }
+    </li>
+    <script>
+        {$sign}.list[{$row.id}] = {:json_encode($row)};
+    </script>
+{/volist}
+</ul>
+{$list|raw}

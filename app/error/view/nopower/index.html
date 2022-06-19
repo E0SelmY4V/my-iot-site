@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>错误：您没有权限</title>
+	<script type="text/javascript">
+		time = 3;
+		setInterval(function() {
+			spanTime.innerText = --time;
+			if (time == 0) window.location.href = "../home";
+		}, 1000);
+	</script>
+</head>
+<body>
+	<h1>
+		对不起，您没有权限浏览此页面！<br /><br />
+		<span id="spanTime">3</span> 秒后将跳回主页
+	</h1>
+</body>
+</html>

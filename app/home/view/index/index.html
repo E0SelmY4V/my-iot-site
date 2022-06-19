@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="../public/static/js/jquery.min.js"></script>
+	<script>
+		function logout() {
+			$.ajax({
+				url: "./",
+				data: "logout",
+				type: "post",
+			})
+			parent.location.href = './';
+		}
+	</script>
+</head>
+
+<body>
+	<h1>欢迎您，{$user.chinese}！</h1>
+	您的用户组：
+	{$user.group.chinese}<br />
+	您的权限： {eq name="user.power" value="all"}
+	<b>最高级权限</b>
+	{else/}
+		{volist name='user.power' id='qx'}{$qx} {/volist}
+	{/eq}
+	<br /><br />
+	<button onclick="logout()">登出账号</button>
+</body>
+
+</html>

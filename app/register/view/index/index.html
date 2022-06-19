@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <script type="text/javascript">
+        function regFunc() {
+            if(regOrStop) {
+                manyRegButton.innerHTML = "停止注册";
+                regTimer = setInterval(function() {
+                    nameInput.value = count;
+                    passwordInput.value = "123456";
+                    regButton.click();
+                }, 500)
+            } else {
+                window.clearInterval(regTimer)
+            }
+        }
+        count = 0;
+        regOrStop = 1;
+    </script>
+</head>
+<body>
+    <form action="register" method="post" target="hh" >
+        账号：<input name="account" id="nameInput" /><br />
+        密码：<input name="pwd" id="passwordInput" /><br />
+        <input id="subInput" type="submit" style="display: none;" />
+        <button onclick="subInput.click();countText.innerText = ++count;" id="regButton">注册</button>
+    </form>
+    <h1>目前已经注册了：<a id="countText">0</a></h1>
+    <button onclick="regFunc()" id="manyRegButton">批量注册</button><br>
+    <iframe name="hh"></iframe>
+</body>
+</html>
